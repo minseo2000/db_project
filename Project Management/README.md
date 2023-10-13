@@ -24,6 +24,7 @@
 
 
 ## USE CASE
+<img width="864" alt="usecase" src="https://github.com/minseo2000/db_project/assets/59526414/4333359e-f13f-401c-b4e5-abc0b47c3d68">
 <hr>
 
 ## USE CASE DESCRIPTION
