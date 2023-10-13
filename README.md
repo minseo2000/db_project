@@ -2,15 +2,20 @@
 
 주제 : 넷플릭스 클론 코딩
 
+We are Studying at Dongguk Univ. ![img](https://github.com/minseo2000/db_project/assets/59526414/db6c56a5-c073-4fef-946c-85b8f68f1c29)
+
 <hr>
 
 ## Team Member
+
+
+
 |                                                        Team                                                        |     Name     |         Position         |GitHub|Blog| E-mail                                         |
 |:------------------------------------------------------------------------------------------------------------------:|:------------:|:------------------------:|:--:|:--:|------------------------------------------------|
 | <img src="https://github.com/dalabdgw/dalabdgw/assets/135303032/95566539-02d1-4aa3-917b-ad6009b8b9ae" width="110"> | Min-Seo Park | Undergraduate Researcher |<a href="https://github.com/minseo2000">GitHub</a>|<a href="https://simsimit00.tistory.com/">Tistory</a>| qlqlxks123@naver.com<br/>pms1001@dongguk.ac.kr |
-| <img src="https://github.com/minseo2000/db_project/assets/59526414/a38e1930-fa8f-4ac2-a3c4-44f16604b6ca" width="110">                                                                                                      |   Sung Ryu   | Undergraduate Researcher |<a href="https://github.com/minseo2000">GitHub</a>|<a href="https://simsimit00.tistory.com/">Tistory</a>| ryusung0653@naver.com <br/> ryusung0653@github.com|
+| <img src="https://github.com/minseo2000/db_project/assets/59526414/a38e1930-fa8f-4ac2-a3c4-44f16604b6ca" width="110">                                                                                                      |   Sung Ryu   | Undergraduate Researcher |<a href="https://github.com/minseo2000">GitHub</a>|<a href="https://simsimit00.tistory.com/">Tistory</a>| ryusung0653@naver.com <br/> ryusung0653@dongguk.ac.kr|
 |                                                                                                                    |  Won-Ik Son  | Undergraduate Researcher |<a href="https://github.com/minseo2000">GitHub</a>|<a href="https://simsimit00.tistory.com/">Tistory</a>|                                                |
-|                                                                                                                    | Duck-Yoon Im | Undergraduate Researcher |<a href="https://github.com/minseo2000">GitHub</a>|<a href="https://simsimit00.tistory.com/">Tistory</a>|                                                |
+|<img src="https://github.com/minseo2000/db_project/assets/59526414/157bdc29-977c-479f-b38c-55501e3bf40a" width="110">                                                                                                                    | Duck-Yoon Im | Undergraduate Researcher |<a href="https://github.com/minseo2000">GitHub</a>|<a href="https://simsimit00.tistory.com/">Tistory</a>|                                              duky8n@gmail.com <br/> duky8n@dongguk.ac.kr  |
 |                                                                                                                    | Ji-Won Park  | Undergraduate Researcher |<a href="https://github.com/minseo2000">GitHub</a>|<a href="https://simsimit00.tistory.com/">Tistory</a>|                                                |
 
 
