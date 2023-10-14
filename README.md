@@ -39,3 +39,8 @@ We are Studying at Dongguk Univ. ![img](https://github.com/minseo2000/db_project
   <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
   <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
 </div>
+
+## Working History
+| When?      | Working Contents                                                                                                    | Result Link                                              |
+|------------|---------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
+| 2023-10-13 | 1. Write WBS<br/>2. Make Gantt chart<br/>3. Define Functions<br/>4. Make Use Case<br/>5. Write Use Case Description | You can see our "Results" In  "Project Management folder" |
