@@ -31,11 +31,11 @@
 
 ## USE CASE
 
-| 시스템 이름      | 유스케이스 다이어그램 |
-|-------------|-------------|
-| 영화관리 시스템    |  <img width="465" height="465" alt="movie management diagram" src="https://github.com/minseo2000/db_project/assets/59526414/fcc22689-dd9d-42a3-a909-79d8a362cc46">|
-| 영화 후기 관리 시스템 |<img width="465" height="465" alt="후기 다이어그램" src="https://github.com/minseo2000/db_project/assets/59526414/97de2440-4ece-457f-9875-f8e55a519db4">|
-|             ||
+| 시스템 이름      | 유스케이스 다이어그램                                                                                                                                                       |
+|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 영화관리 시스템    | <img width="300" height="300" alt="movie management diagram" src="https://github.com/minseo2000/db_project/assets/59526414/fcc22689-dd9d-42a3-a909-79d8a362cc46"> |
+| 영화 후기 관리 시스템 | <img width="300" height="300" alt="후기 다이어그램" src="https://github.com/minseo2000/db_project/assets/59526414/97de2440-4ece-457f-9875-f8e55a519db4">         |
+|             |                                                                                                                                                                   |
 
 <hr>
 
