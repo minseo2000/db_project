@@ -1,5 +1,6 @@
 # usecase diagram
-<img width="465" alt="movie management diagram" src="https://github.com/minseo2000/db_project/assets/59526414/175c9305-7134-4f2b-8455-61869c55d642">
+<img width="628" alt="스크린샷 2023-10-20 오후 7 37 00" src="https://github.com/minseo2000/db_project/assets/59526414/22e11ace-cfcd-48e3-8665-6b86cc8f2092">
+
 
 # usecase description
 | 동영상 검색 |![동영상 검색](https://github.com/minseo2000/db_project/assets/59526414/7f5a8d3d-db7a-40b3-8b3d-d13cb70c2ed9)|
