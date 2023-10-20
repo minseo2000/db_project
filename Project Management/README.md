@@ -20,10 +20,22 @@
 
 ## 기능 정의
 
+| 시스템 이름       | 기능 이름       | Description Link |
+|--------------|-------------|------------------|
+| 영화 관리 시스템    | 오른쪽 REPO 참조 | https://github.com/minseo2000/db_project/tree/master/Project%20Management/usecase_update/movie_management_system                 |
+| 영화 후기 관리 시스템 |  오른쪽 REPO 참조     |  https://github.com/minseo2000/db_project/tree/master/Project%20Management/usecase_update/movie_%ED%9B%84%EA%B8%B0_%EC%8B%9C%EC%8A%A4%ED%85%9C                |
+|              |       |                  |
+
 <hr>
 
 
 ## USE CASE
+
+| 시스템 이름      | 유스케이스 다이어그램 |
+|-------------|-------------|
+| 영화관리 시스템    |             |
+| 영화 후기 관리 시스템 ||
+|             ||
 
 <hr>
 
