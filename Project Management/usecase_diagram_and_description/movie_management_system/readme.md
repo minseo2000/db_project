@@ -1,5 +1,6 @@
 # usecase diagram
-<img width="628" alt="스크린샷 2023-10-20 오후 7 37 00" src="https://github.com/minseo2000/db_project/assets/59526414/22e11ace-cfcd-48e3-8665-6b86cc8f2092">
+<img width="593" alt="movie management" src="https://github.com/minseo2000/db_project/assets/59526414/f59c48b1-cf4a-4dc6-965d-658baef466b7">
+
 
 
 # usecase description
@@ -15,3 +16,5 @@
 | 자막 생성             |![자막 생성](https://github.com/minseo2000/db_project/assets/59526414/acb81cfc-3872-40b3-b5f4-cf0b6f28f2f6)|
 | 자막 수정             |![자막 수정](https://github.com/minseo2000/db_project/assets/59526414/5ecca356-913d-40ef-92b2-a122acd17148)|
 | 자막 삭제             |![자막 삭제](https://github.com/minseo2000/db_project/assets/59526414/bffc2d30-ca27-4b84-ba9d-266d39c06b0d)|
+|영화 검색 (관리자)|![영화 검색 - 관리자](https://github.com/minseo2000/db_project/assets/59526414/e9fb4d8e-5ec4-45d8-8614-68e30023a44c)|
+|영화 검색 (사용자)|![영화 검색 - 사용자](https://github.com/minseo2000/db_project/assets/59526414/f2ec268a-a123-429f-9394-2707d2dd0a0e)|
