@@ -41,6 +41,7 @@ We are Studying at Dongguk Univ. ![img](https://github.com/minseo2000/db_project
 </div>
 
 ## Working History
-| When?      | Working Contents                                                                                                    | Result Link                                              |
-|------------|---------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
-| 2023-10-13 | 1. Write WBS<br/>2. Make Gantt chart<br/>3. Define Functions<br/>4. Make Use Case<br/>5. Write Use Case Description | You can see our "Results" In  "Project Management folder" |
+| When?      | Working Contents                                                                                                   | Result Link                                                                        |
+|------------|--------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| 2023-10-13 | 1. Write WBS<br/>2. Make Gantt chart<br/>3. Define Functions<br/>4. Make Use Case<br/>5. Write Use Case Description | You can see our "Results" In  "Project Management folder"                          |
+| 2023-10-20 | 1. Re-Building Usecase Diagram and Description<br/>2. Make Class Diagram                                           | You can see our "Results" In  "Project Management/usecase_diagram_and_description" |
