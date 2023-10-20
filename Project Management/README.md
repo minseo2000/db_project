@@ -33,9 +33,9 @@
 
 | 시스템 이름       | 유스케이스 다이어그램                                                                                                                                                       |
 |--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 영화관리 시스템     ||
-| 영화 후기 관리 시스템 ||
-| 유저 관리 시스템    | |
+| 영화관리 시스템     |<img width="593" alt="movie management" src="https://github.com/minseo2000/db_project/assets/59526414/61e4c48a-cd9c-4c6c-9a8b-f55cca85f946">|
+| 영화 후기 관리 시스템 |<img width="593" alt="영화 후기" src="https://github.com/minseo2000/db_project/assets/59526414/7861f319-3eac-40ff-8c95-b88ec927a7dd">|
+| 유저 관리 시스템    | <img width="462" alt="user_table" src="https://github.com/minseo2000/db_project/assets/59526414/25cf1abb-5b77-4ff4-9a35-561ce18b9273">|
 
 <hr>
 
