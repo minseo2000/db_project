@@ -41,7 +41,8 @@ We are Studying at Dongguk Univ. ![img](https://github.com/minseo2000/db_project
 </div>
 
 ## Working History
-| When?      | Working Contents                                                                                                   | Result Link                                                                        |
-|------------|--------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| 2023-10-13 | 1. Write WBS<br/>2. Make Gantt chart<br/>3. Define Functions<br/>4. Make Use Case<br/>5. Write Use Case Description | You can see our "Results" In  "Project Management folder"                          |
-| 2023-10-20 | 1. Re-Building Usecase Diagram and Description<br/>2. Make Class Diagram                                           | You can see our "Results" In  "Project Management/usecase_diagram_and_description" |
+| When?      | Working Contents                                                                                                    | Result Link                                                                                                                                             |
+|------------|---------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 2023-10-13 | 1. Write WBS<br/>2. Make Gantt chart<br/>3. Define Functions<br/>4. Make Use Case<br/>5. Write Use Case Description | You can see our "Results" In  "Project Management folder"                                                                                               |
+| 2023-10-20 | 1. Re-Building Usecase Diagram and Description<br/>2. Make Class Diagram                                            | You can see our "Results" In  "Project Management/usecase_diagram_and_description"                                                                      |
+| 2023-10-27 | 1. Make Class Diagram<br/>2. make UI Description<br/>3. make RDB (Conceptual modeling)                              | 1. Class Diagram -> Project Management/class_diagram/<br/>2. UI_description -> Project Management/UI_description/<br/>3. RDB -> Project Management/RDB/ |
