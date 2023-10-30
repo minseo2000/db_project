@@ -43,3 +43,49 @@ delete from 테이블명 where (조건 기술);
 | 정렬을 하고 싶은 경우 (ORDER BY) (오름차순 : ASC, 내림차순: DESC), 기본은 오름차순, WHERE 절 다음에 ORDER BY 절 사용하기!                                          | select ename, hiredate from emp where job='SALESMAN' order by hiredate; <br/>select ename, sal from emp where job='salesman' order by sal desc;<br/>select deptno, ename, job from emp orderby deptno, ename;                                                                                       |
 | 그룹으로 정렬 하고 싶은 경우(GROUP BY), HAVING 계산 <br/>테이블 전체 듀플에 적용되는 검색 조건은 WHERE 다음에 기술<br/>GROUP BY에 의해 만들어진 결과에 적용할 검색 조건은 HAVING 다음에 기술 |                                                                                                                                                                                                                                                                                                     |
 | WHERE 절 다음 GROUP BY 절 다음 HAVING 절 다음 ORDER BY 절 작성                                                                                ||
+
+
+# Create table 문
+- 테이블을 구성하고, 속성과 속성에 관한 제약을 정의하며, 기본키 및 외래키를 정의하는 명령어
+- NOT NULL은 NULL값을 허용하지 않는 제약, UNIQUE는 유일한 값에 대한 제약, DEFAULT는 기본 값 설정, CHECK는 값에 대한 조건을 부여할 때 사용.
+
+```
+create table 테이블이름
+({
+  속성이름 데이터 타입 [NOT NULL or UNIQUE or DEFAULT 기본값 or CHECK 체크조건]
+  [PRIMARY KEY 속성이름(들)]
+  [FOREIGN KEY 속성이름 REFERENCES 테이블이름(속성이름) ON UPDATE -> NO ACTION or SET NULL or SET DEFAULT]
+  [FOREIGN KEY 속성이름 REFERENCES 테이블이름(속성이름) ON DELETE -> NO ACTION or SET NULL or SET DEFAULT]
+})
+```
+# Alter table 문
+
+```
+ALTER TABLE 테이블이름
+
+  [ADD 속성이름 데이터타입]
+  [DROP COLUMN 속성이름]
+  [ALTER COLUMN 속성이름 데이터 타입]
+  [ALTER COLUMN 속성이름 [NULL | NOT NULL]]
+  [ADD PRIMARY KEY (속성이름)]
+  [[ADD|DROP 제약이름]
+```
+
+# DROP table 문
+
+```
+DROP TABLE 테이블 이름
+```
+
+# INSERT INTO 문
+```
+INSERT INTO 테이블이름(속성들) VALUES (값들)
+```
+
+# UPDATE 문
+
+```
+UPDATE 테이블이름
+SET 속성이름=값
+WHERE 검색조건
+```
