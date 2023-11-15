@@ -241,9 +241,62 @@ class User3 implements I1Op3{
 
 - 코드로 보자!
 ```java
-class Application {
+class Copy {
+    ReadKeyboard read = new ReadKeyboard();
+    
+}
+
+class ReadKeyboard {
 
 }
 
+class WriteKeyboard {
+
+}
+
+class WriteDisk {
+
+}
 
 ```
+
+```java
+
+class Copy {
+
+}
+
+interface Reader {
+
+}
+
+interface Writer {
+
+}
+
+class KeyboardReader implements Reader {
+
+
+}
+class PrinterWriter implements Writer {
+
+
+}
+
+class DiskWriter implements Writer {
+
+}
+
+main() {
+    PriterWriter printerWriter = new PriterWriter();
+    Writer writer = new Writer(printerWriter);
+    
+     
+
+}
+
+```
+
+![img.png](img.png)
+- 위처럼 새로운 기능을 추가 시 코드 변경 x OCP원칙
+- 구체화된 클래스가 추상 클래스를 참조. (DIP 의존 역전 원칙)
