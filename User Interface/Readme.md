@@ -11,11 +11,14 @@
 <hr>
 
 ## LOGIN UI
+![login.png](login.png)
 <hr>
 
 ## REGISTER UI
+![signup.png](signup.png)
 <hr>
 
 ## MAIN PAGE UI
+![Main.png](./Main.png)
 <hr>
 
