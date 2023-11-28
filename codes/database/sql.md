@@ -164,6 +164,12 @@ create table store(
 |                                   ||
 |                                   ||
 
+## 예제 데이터 입력 쿼리
+
+```sql
+
+```
+
 
 ```sql
 
