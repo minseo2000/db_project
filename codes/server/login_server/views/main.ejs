@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인 페이지</title>
+    <style>
+        /* 기본 스타일 설정 */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', Arial, sans-serif;
+            background-color: #e9ecef;
+        }
+
+        /* 헤더 스타일 */
+        header {
+            background-color: #343a40;
+            color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* 내비게이션 스타일 */
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+            margin: 0;
+        }
+
+        /* 버튼 스타일 */
+        nav button {
+            background-color: #007bff;
+            border: none;
+            padding: 0.5rem 1rem;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        /* 버튼 호버 효과 */
+        nav button:hover {
+            background-color: #0056b3;
+        }
+
+        /* 검색 컨테이너 스타일 */
+        .search-container {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 검색 입력 필드 스타일 */
+        .search-container input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        /* 검색 버튼 스타일 */
+        .search-container button {
+            padding: 8px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* 메인 컨텐츠 스타일 */
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 60px;
+            min-height: calc(100% - 60px);
+        }
+
+        /* 랭킹 섹션 스타일 */
+        #rankSection {
+            position: absolute;
+            top: 100px; /* Adjust based on the actual height of the header */
+            left: 50px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+
+        /* 테이블 스타일 */
+        #rankTable {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        /* 테이블 헤더 스타일 */
+        #rankTable thead {
+            background-color: blanchedalmond;
+            color: black    ;
+        }
+
+        /* 테이블 셀 스타일 */
+        #rankTable th, #rankTable td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        /* 테이블 바디 호버 스타일 */
+        #rankTable tbody tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        /* 홀수 행 스타일 */
+        #rankTable tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        /* 고정된 테이블 헤더 스타일 */
+        #rankTable th {
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* 상단 우측 박스 스타일 */
+        .top-right-box {
+            position: fixed;
+            top: 130px; /* 헤더 높이에 맞춰서 조정하세요. */
+            right: 50px; /* 우측 여백을 조정하세요. */
+            width: 450px; /* 필요에 따라 박스의 너비를 조정하세요. */
+            height: 500px; /* 박스의 높이를 조정하세요. */
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 999; /* 헤더의 z-index보다 낮아야 합니다. */
+            padding: 10px;
+            box-sizing: border-box;
+            overflow-y: auto; /* 내용이 많을 경우 스크롤바를 표시 */
+}
+
+        /* 반응형 디자인 스타일 */
+        @media (max-width: 768px) {
+            .search-container,
+            .user-controls {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .search-container input[type="text"],
+            .search-container button {
+                width: 100%;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            #rankSection {
+                position: relative;
+                top: 0;
+                left: 0;
+                width: auto;
+                margin-top: 70px;
+                margin-left: 0;
+            }
+
+            main {
+                padding-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 시작 -->
+    <header>
+        <nav>
+            <ul>
+                <li><button id="boardBtn">게시판</button></li>
+                <!-- 검색 컨테이너 -->
+                <li class="search-container">
+                    <input type="text" id="searchInput" placeholder="소환사 이름 검색...">
+                    <button id="searchBtn">검색</button>
+                </li>
+                <!-- 사용자 컨트롤 -->
+                <div class="user-controls">
+                    <li id="userGreeting">[사용자 이름]</li>
+                    <li><form action='/logout' method='get'><button id="logoutBtn">로그아웃</button></form></li>
+                </div>
+            </ul>
+        </nav>
+    </header>
+    <!-- 상단 우측 박스 -->
+    <div class="top-right-box">
+        <div id="userProfile">
+            <img id="summonerIcon" src="" alt="Summoner Icon">
+            <div id="summonerInfo">
+                <h3 id="summonerName">Summoner Name</h3>
+                <p id="summonerTier">Tier</p>
+                <p id="summonerWins">Wins</p>
+                <p id="summonerLosses">Losses</p>
+                <p id="summonerWinRate">Win Rate</p>
+            </div>
+        </div>
+    </div>
+    <!-- 메인 컨텐츠 시작 -->
+    <main>
+        <!-- 랭킹 섹션 -->
+        <section id="rankSection">
+            <table id="rankTable">
+                <!-- 테이블 헤더 -->
+                <thead>
+                    <tr>
+                        <th>순위</th>
+                        <th>소환사</th>
+                        <th>티어</th>
+                        <th>승</th>
+                        <th>패</th>
+                        <th>승률</th>
+                    </tr>
+                </thead>
+                <!-- 테이블 바디 -->
+                <tbody>
+                    <!-- 데이터 삽입 위치 -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <!-- 페이지 로드 시 데이터 가져오기 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/get-lol-data')
+            .then(response => response.json())
+            .then(data => {
+                const rankTableBody = document.getElementById('rankTable').querySelector('tbody');
+                data.forEach((summoner, index) => {
+                    const row = rankTableBody.insertRow();
+                    // 셀에 데이터 삽입
+                    row.insertCell(0).innerText = index + 1;
+                    row.insertCell(1).innerText = summoner.LoLname;
+                    row.insertCell(2).innerText = summoner.Tier;
+                    row.insertCell(3).innerText = summoner.Wins;
+                    row.insertCell(4).innerText = summoner.Losses;
+                    row.insertCell(5).innerText = `${summoner.WinRate}%`;
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
