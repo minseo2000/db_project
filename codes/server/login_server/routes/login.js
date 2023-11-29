@@ -20,6 +20,7 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
+/*
 router.post('/login', async(req, res) => {
     const id = req.body.id;
     const password = sha(req.body.password);
@@ -49,6 +50,7 @@ router.post('/login', async(req, res) => {
         console.log(err);
     }
 });
+*/
 
 
 
