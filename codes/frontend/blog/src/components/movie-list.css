@@ -1,0 +1,11 @@
+.movie-list {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+    scrollbar-width: none;
+    height: 220px;
+}
+.movie-list::-webkit-scrollbar {
+    display: none; /* 스크롤바 숨기기 */
+}

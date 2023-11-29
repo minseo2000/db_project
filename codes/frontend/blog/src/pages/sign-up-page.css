@@ -1,0 +1,90 @@
+#sign-up-page {
+    background-image: url(../../public/background.jpg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif;
+    font-size: 16px;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+#sign-up-page #sign-up-form {
+    background-color: rgba(0, 0, 0, 0.884);
+    padding: 80px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+#sign-up-page p{
+    margin: 30px 0px 0px 0px;
+}
+
+#sign-up-page h1 {
+    margin: 0px 0px 30px 0px;
+}
+
+#sign-up-page input {
+    display: block;
+    unicode-bidi: isolate;
+    font: inherit;
+    margin: 10px 0;
+    appearance: none;
+    box-sizing: border-box;
+    font-size: 16px;
+    box-shadow: none;
+    width: 100%;
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    padding: 20px 20px;
+    background: #333;
+}
+
+#sign-up-page button {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    direction: ltr;
+    font: inherit;
+    overflow: visible;
+    text-transform: none;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    letter-spacing: .1px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    vertical-align: middle;
+    box-shadow: 0 1px 0 rgba(0,0,0,.55);
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    line-height: 1em;
+    min-height: 37px;
+    min-width: 98px;
+    background: #e50914;
+    padding: 16px;
+    max-width: 100%;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 24px 0 12px;
+}
+
+#sign-up-page p a {
+    display: inline-block;
+    margin: 0 0 0 5px;
+}
+
+#logo {
+    position: absolute;
+    width: 200px;
+    top: 0;
+    left: 30px;
+}

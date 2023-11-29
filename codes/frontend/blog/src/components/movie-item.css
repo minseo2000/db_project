@@ -1,0 +1,16 @@
+.movie-item {
+    background-color: red;
+    width: 341px;
+    height: 192px;
+
+    flex: 0 0 auto; /* flex-grow, flex-shrink, flex-basis */
+    margin-right: 10px; /* 아이템 간 간격 */
+}
+
+.rank {
+    font-size: 30px;
+    position: relative;
+    top: 90px;
+    left: 280px;
+    font-size: 100px;
+}
