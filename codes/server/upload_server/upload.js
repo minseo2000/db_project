@@ -74,7 +74,7 @@ let uploadData = 0;
                     // 업로드 진행 상황 출력 (자주 출력하려면 조절 필요)
                     const contentLength = req.headers['content-length'];
                     const progress = (uploadData/ contentLength) * 100;
-                    console.log(`업로드 진행률: ${progress.toFixed(2)}%`);
+                    res.send(`업로드 진행률: ${progress.toFixed(2)}%`);
                 });
             });
 
