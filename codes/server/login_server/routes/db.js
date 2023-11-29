@@ -5,7 +5,8 @@ const config = {
         user : 'sa',
         password : '2019212950@M',
         database : 'netflix',
-        server : 'minseotest.iptime.org:50010',
+        server : 'minseotest.iptime.org',
+        port : 50010,
         options: {
             trustServerCertificate: true
         },
