@@ -18,11 +18,11 @@ router.use(express_session({
 
 
 
-/*
+
 router.post('/login', async(req, res) => {
     const id = req.body.id;
     const password = sha(req.body.password);
-    const query = 'select  password from userstate where id = @id';
+    const query = 'select password from userstate where id = @id';
    
     try{
         const result = await queryDatabase(query, {id});
@@ -48,7 +48,7 @@ router.post('/login', async(req, res) => {
         console.log(err);
     }
 });
-*/
+
 
 
 
