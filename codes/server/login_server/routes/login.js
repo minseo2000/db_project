@@ -15,11 +15,12 @@ router.use(express_session({
 
 
 router.post('/login', async(req, res) => {
-    const user_id_c = req.body.user_id_c;
-    const pass_word = sha(req.body.pass_word);
-    const selectUser = 'select  pass_word from user_table where user_id_c = @user_id_c';
+
    
     try{
+        const user_id_c = req.body.user_id_c;
+        const pass_word = sha(req.body.pass_word);
+        const selectUser = 'select  pass_word from user_table where user_id_c = @user_id_c';
         const result = await queryDatabase(selectUser, {user_id_c});
         if(result[0] != undefined){
             if (pass_word == result[0].pass_word){   
