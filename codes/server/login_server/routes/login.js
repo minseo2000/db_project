@@ -1,7 +1,5 @@
 const express = require('express');
-const app = express();
 const router = express.Router();
-const {dbConnection} = require('./db');
 const sha = require('sha256');
 const {queryDatabase} = require('./db');
 const express_session = require('express-session')
@@ -16,31 +14,23 @@ router.use(express_session({
 }))
 
 
-
-
-
 router.post('/login', async(req, res) => {
-    const id = req.body.id;
-    const password = sha(req.body.password);
-    const query = 'select password from userstate where id = @id';
+    const user_id_c = req.body.user_id_c;
+    const pass_word = sha(req.body.pass_word);
+    const selectUser = 'select  pass_word from user_table where user_id_c = @user_id_c';
    
     try{
-        const result = await queryDatabase(query, {id});
+        const result = await queryDatabase(selectUser, {user_id_c});
         if(result[0] != undefined){
-            if (password == result[0].password) {   
-
-                req.session.userId = id;
-                req.session.save();
+            if (pass_word == result[0].pass_word){   
                 res.status(200).json({message : '로그인 성공하였습니다.'});
             } else {
                 res.status(400).json({message : '사용자의 비밀번호가 일치하지 않습니다.'});
-                console.log('비밀번호 불일치');
             }
         }
         
         else{
             res.status(401).json({message : '사용자의 아이디가 존재하지 않습니다.'});
-            console.log('아이디 없음');
         }
     }
     catch(err){
@@ -48,7 +38,6 @@ router.post('/login', async(req, res) => {
         console.log(err);
     }
 });
-
 
 
 
