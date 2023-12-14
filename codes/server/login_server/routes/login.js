@@ -6,6 +6,10 @@ const express_session = require('express-session')
 const MemoryStore = express_session.MemoryStore;
 const sessionStore = new MemoryStore();
 
+const cors = require('cors');
+app.use(cors());
+
+
 router.use(express_session({
     secret : 'zsmoqemdqwo',
     resave : false,
