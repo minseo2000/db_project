@@ -15,7 +15,7 @@ let uploadData = 0;
 
  async function main() {
     try {
-        const Dom = await result();
+        const Dom = '../../../../videos/';
 
         if (Dom.length >= 1) {
             const sha256 = (data) => {
