@@ -6,40 +6,58 @@
     <title>Video Manager</title>
     <style>
         body {
-    font-family: Arial, sans-serif;
-    background-color: #141414;
-    color: white;
-}
+            font-family: Arial, sans-serif;
+            background-color: #141414;
+            color: white;
+        }
 
-header {
-    background-color: #E50914;
-    padding: 10px;
-    text-align: center;
-}
+        header {
+            background-color: #E50914;
+            padding: 10px;
+            text-align: center;
+        }
 
-#video-upload, #video-list {
-    width: 80%;
-    margin: auto;
-    padding: 20px;
-}
+        #video-upload {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-form input, form textarea, form button {
-    padding: 10px;
-}
+        form input, form textarea, form button {
+            padding: 10px;
+        }
 
-button {
-    background-color: #E50914;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
+        button {
+            background-color: #E50914;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
+        #progress-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        #progress-bar {
+            width: 0%;
+            height: 20px;
+            background-color: #E50914;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            border-radius: 10px;
+            transition: width 0.5s ease-in-out;
+        }
     </style>
 </head>
 <body>
@@ -49,54 +67,58 @@ button {
 
     <section id="video-upload">
         <h2>Upload Video</h2>
-        <form action="/upload" method="post" enctype="multipart/form-data">
+        <form id="upload-form" enctype="multipart/form-data">
             <input type="file" name="videoFile" required>
             <input type="text" name="title" placeholder="Title" required>
             <textarea name="description" placeholder="Description"></textarea>
             <button type="submit">Upload</button>
         </form>
+        <div id="progress-container">
+            <div id="progress-bar">0%</div>
+        </div>
     </section>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const form = document.querySelector('#video-upload form');
+            const form = document.getElementById('upload-form');
+            const progressBar = document.getElementById('progress-bar');
+
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
-    
+
                 const formData = new FormData(form);
                 const xhr = new XMLHttpRequest();
-    
+
                 xhr.open('POST', '/upload', true);
-                xhr.setRequestHeader('enctype', 'multipart/form-data');
-    
+
                 xhr.upload.onprogress = function(event) {
                     if (event.lengthComputable) {
                         const progress = (event.loaded / event.total) * 100;
-                        console.log(`업로드 진행률: ${progress.toFixed(2)}%`);
+                        progressBar.style.width = progress.toFixed(2) + '%';
+                        progressBar.textContent = progress.toFixed(2) + '%';
                     }
                 };
-    
+
                 xhr.onload = function() {
                     if (xhr.status === 200) {
                         console.log('업로드 완료:', xhr.responseText);
                         alert('업로드 완료!');
+                        progressBar.style.width = '0%'; // 초기화
+                        progressBar.textContent = '0%'; // 텍스트 초기화
                     } else {
                         console.error('업로드 실패:', xhr.status, xhr.statusText);
                         alert('업로드 실패!');
                     }
                 };
-    
+
                 xhr.onerror = function() {
                     console.error('업로드 중 에러 발생');
                     alert('업로드 중 에러 발생!');
                 };
-    
+
                 xhr.send(formData);
             });
         });
     </script>
-    
-
-    
 </body>
 </html>
