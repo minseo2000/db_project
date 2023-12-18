@@ -67,8 +67,17 @@
 
     <section id="video-upload">
         <h2>Upload Video</h2>
-        <form id="upload-form" enctype="multipart/form-data">
-            <input type="file" name="videoFile" required>
+        <form action='/upload' id="upload-form" enctype="multipart/form-data">
+            <div class="file-input-container">
+                <label for="videoFiles">비디오 파일 (여러 개 선택 가능):</label>
+                <input type="file" name="videoFiles" id="videoFiles" multiple required>
+                <div id="file-list">선택된 파일 없음</div>
+            </div>
+            
+            <label for="imageFile">대표 이미지 파일:
+                <input type="file" name="imageFile" id="imageFile" required>
+            </label>
+
             <input type="text" name="title" placeholder="Title" required>
             <textarea name="description" placeholder="Description"></textarea>
             <button type="submit">Upload</button>
@@ -79,10 +88,21 @@
     </section>
 
     <script>
+        
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('upload-form');
             const progressBar = document.getElementById('progress-bar');
+            const videoFilesInput = document.getElementById('videoFiles');
+        const fileList = document.getElementById('file-list');
 
+        videoFilesInput.addEventListener('change', function() {
+            fileList.innerHTML = ''; // 기존 목록 초기화
+            for (let i = 0; i < this.files.length; i++) {
+                const file = this.files[i];
+                fileList.innerHTML += `<div>${file.name}</div>`;
+            }
+        });
+            
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
 
