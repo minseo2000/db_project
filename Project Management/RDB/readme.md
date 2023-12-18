@@ -22,13 +22,39 @@
 장르(장르번호(PK), 장르이름)
 장르동영상(장르동영상번호(PK), 장르번호(FK), 동영상번호(FK))
 하위동영상(동영상 번호(PK), 동영상 번호(FK), 동영상url, 순서)
+
+user_table
+(user_id, user_id_c, card_id, pass_word, ph_num, user_name, birth_date, email, service_grade)
+card_table
+(card_id, birth_date, card_name, company, pay_money)
+profile
+(profile_id, profile_img_url, user_id, nickname)
+video
+(video_id, title, description, view_count, release_date, video_img_url)
+video_actor
+(video_actor_id, actor_name)
+video_actor_relation
+(video_actor_relation_id, video_actor_id, video_id)
+play_time
+(play_time_id, profile_id, video_id, time, date)
+zzip
+(zzip_id, profile_id, video_id)
+store
+(store_id, profile_id, video_id)
+video_detail
+(video_detail_id, video_id, video_url, sequence)
+video_genre_relation
+(video_genre_relation_id, video_genre_id, video_id)
+video_genre
+(video_genre_id, genre_name)
+
 ```
 
 # 물리적 모델링
 
 ![img_1.png](erd_phy.png)
 
-## 테이블 관련 SQL
+## 테이블 생성 관련 SQL
 ```sql
 // 비디오 테이블
 create table video(
@@ -133,3 +159,30 @@ create table store(
     foreign key (video_id) references video(video_id)
 );
 ```
+
+## 기능별 정리
+
+| 기능           | SQL                                                                                                                                                       |
+|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 영화 테이블       | ----------------------------------------------------                                                                                                      |
+| 영화 목록 삽입     | insert into video(title, description, view_count, release_date, video_img_url) values();                                                                  |
+| 영화 목록 삭제     | delete from video where title = ?;                                                                                                                        |
+| 영화 목록 수정     | update video set 'column' = 'value' where '조건'                                                                                                            |
+| 영화 상세 테이블    | ----------------------------------------------------                                                                                                      |
+| 영화 상세 목록 삽입  | insert into video_detail(video_id, video_url, sequence) values ()                                                                                         |
+| 영화 상세 목록 삭제  | delete from video_detail where video_id = ?                                                                                                               |
+| 영화 상세 목록 수정  | update video_detail set 'column' = 'value' where '조건'                                                                                                      |
+| 유저 테이블       | ----------------------------------------------------                                                                                                      |
+| 유저 테이블 삽입    | 유저 테이블 값 넣기 전 card 테이블에 값 넣어야 함.<br>insert into user_table(user_id_c, card_id, pass_word, ph_num, user_name, birth_date, email, service_grade) values (?) |
+| 유저 테이블 삭제    | 유저 테이블 삭제 전 user_id 조회해야 함.<br>delete from user_table where user_id = ?                                                                                   |
+| 유저 테이블 수정    | 유저 테이블 삭제 전 user_id 조회해야 함<br>update user_table set 'column' = 'value' where '조건'                                                                         |
+| profile 테이블  | ----------------------------------------------------                                                                                                      |
+| 프로필 테이블 값 삽입 | insert into profile(profile_img_url, user_id, nickname) values (?);                                                                                       |
+| 프로필 테이블 값 삭제 | 내 프로필 id 조회 필요<br>delete from profile where profile_id = ?                                                                                                |
+| 프로필 테이블 값 수정 | 내 프로필 id 조회 필요<br>update profile set 'column' = 'value' where '조건'                                                                                        |
+|  테이블  | ----------------------------------------------------                                                                                                      |
+
+
+
+## 조회 관련 기능은 -> 뷰로 정의해서 하고, 인덱스를 사용하자.
+

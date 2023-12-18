@@ -37,10 +37,10 @@ const storage = multer.diskStorage({
 
 // Multer 업로드 설정
 const upload = multer({
-    limits: { fileSize: 10 * 1024 * 1024 * 1024 },
+    limits: { fileSize: 20 * 1024 * 1024 * 1024 },
     storage: storage
 }).fields([
-    { name: 'videoFiles', maxCount: 16 },
+    { name: 'videoFiles', maxCount: 20 },
     { name: 'imageFile', maxCount: 1 }
 ]);
 
@@ -105,6 +105,8 @@ app.post('/upload', upload, async (req, res) => {
 });
 
 // 서버 시작
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`서버가 http://localhost:${port} 에서 실행 중입니다.`);
 });
+
+server.timeout = 3000000;
