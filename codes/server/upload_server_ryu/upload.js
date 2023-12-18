@@ -30,7 +30,7 @@ const storage = multer.diskStorage({
         done(null, hashedFileName);
     },
     destination(req, file, done) {
-        const folder = file.mimetype.startsWith('image/') ? '../../../../../../../work/images' : '../../../../../../../work/videos';
+        const folder = file.mimetype.startsWith('image/') ? '../../../../../../../../work/images' : '../../../../../../../../work/videos';
         done(null, path.join(__dirname, Dom, folder));
     }
 });
