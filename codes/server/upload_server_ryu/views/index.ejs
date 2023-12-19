@@ -110,7 +110,7 @@
                 const xhr = new XMLHttpRequest();
 
                 xhr.open('POST', '/upload', true);
-
+                xhr.timeout = 3000000;
                 xhr.upload.onprogress = function(event) {
                     if (event.lengthComputable) {
                         const progress = (event.loaded / event.total) * 100;
