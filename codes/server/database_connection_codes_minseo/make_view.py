@@ -55,7 +55,7 @@ def delete():
 
 def makeView():
     try:
-        delete_query = "CREATE VIEW profile_view AS SELECT nickname, profile_image_url from profile, profile_image_relation, profile_image_table where profile.profile_id = profile_image_relation.profile_id and profile_image_table.profile_image_id = profile_image_relation.profile_image_id"
+        delete_query = "CREATE VIEW movie_view AS SELECT video.video_id, title, description, view_count, release_date, video_img_url, video_url, sequence from video, video_detail where video.video_id = video_detail.video_id"
         cursor.execute(delete_query)
         conn.commit()
     except Exception as e:
