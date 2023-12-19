@@ -9,7 +9,7 @@ app.use(express.static("public"));
 // 파일 경로를 '/video/:fileName' 형식으로 받음
 app.get("/video/:fileName", (req, res) => {
     const fileName = req.params.fileName;
-    const filePath = `../../../../../../../../work/videos/${fileName}.mp4`;
+    const filePath = `../../../../../../../../work/videos/${fileName}`;
 
     // 이하 로직은 기존과 동일
     const options = {};
