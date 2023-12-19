@@ -109,6 +109,6 @@ const server = app.listen(port, () => {
     console.log(`서버가 http://localhost:${port} 에서 실행 중입니다.`);
 });
 
-server.timeout = 3000000;
-server.requestTimeout = 3000000;
-server.headersTimeout = 3000000;
+server.timeout = 5000000;
+server.requestTimeout = 5000000;
+server.headersTimeout = 5000000;
