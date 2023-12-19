@@ -37,7 +37,7 @@ const storage = multer.diskStorage({
 
 // Multer 업로드 설정
 const upload = multer({
-    limits: { fileSize: 20 * 1024 * 1024 * 1024 },
+    limits: { fileSize: 50 * 1024 * 1024 * 1024 },
     storage: storage
 }).fields([
     { name: 'videoFiles', maxCount: 20 },
