@@ -8,7 +8,7 @@ app.use(express.static("public"));
 
 app.get("/image/:fileName", (req, res) => {
     const fileName = req.params.fileName;
-    const filePath = `./images/${fileName}`; // 확장자가 이미지 파일 이름에 포함되어 있다고 가정
+    const filePath = `../../../../../../../../work/images/${fileName}`; // 확장자가 이미지 파일 이름에 포함되어 있다고 가정
 
     fs.access(filePath, fs.constants.F_OK, (err) => {
         if (err) {
