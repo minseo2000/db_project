@@ -110,3 +110,5 @@ const server = app.listen(port, () => {
 });
 
 server.timeout = 3000000;
+server.requestTimeout = 3000000;
+server.headersTimeout = 3000000;
