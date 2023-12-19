@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #141414;
+            color: white;
+        }
+
+        header {
+            background-color: #E50914;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #video-upload {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        form input, form textarea, form button {
+            padding: 10px;
+        }
+
+        button {
+            background-color: #E50914;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #progress-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        #progress-bar {
+            width: 0%;
+            height: 20px;
+            background-color: #E50914;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            border-radius: 10px;
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Image Manager</h1>
+    </header>
+
+    <section id="video-upload">
+        <h2>Upload Images</h2>
+        <form action='/upload' id="upload-form" enctype="multipart/form-data">
+            <div class="file-input-container">
+                <label for="imageFiles">이미지 파일 (여러 개 선택 가능):</label>
+                <input type="file" name="imageFiles" id="imageFiles" multiple required>
+                <div id="file-list">선택된 파일 없음</div>
+            </div>
+            <button type="submit">Upload</button>
+        </form>
+        <div id="progress-container">
+            <div id="progress-bar">0%</div>
+        </div>
+    </section>
+
+    <script>
+     document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('upload-form');
+    const progressBar = document.getElementById('progress-bar');
+    const imageFilesInput = document.getElementById('imageFiles');
+    const fileList = document.getElementById('file-list');
+
+    imageFilesInput.addEventListener('change', function() {
+        fileList.innerHTML = ''; // 기존 목록 초기화
+        for (let i = 0; i < this.files.length; i++) {
+            const file = this.files[i];
+            fileList.innerHTML += `<div>${file.name}</div>`;
+        }
+    });
+    
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('POST', '/image_upload', true);
+
+        xhr.upload.onprogress = function(event) {
+            if (event.lengthComputable) {
+                const progress = (event.loaded / event.total) * 100;
+                progressBar.style.width = progress.toFixed(2) + '%';
+                progressBar.textContent = progress.toFixed(2) + '%';
+            }
+        };
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                console.log('업로드 완료:', xhr.responseText);
+                alert('업로드 완료!');
+                progressBar.style.width = '0%'; // 초기화
+                progressBar.textContent = '0%'; // 텍스트 초기화
+            } else {
+                console.error('업로드 실패:', xhr.status, xhr.statusText);
+                alert('업로드 실패!');
+            }
+        };
+
+        xhr.onerror = function() {
+            console.error('업로드 중 에러 발생');
+            alert('업로드 중 에러 발생!');
+        };
+
+        xhr.send(formData);
+    });
+});
+    </script>
+</body>
+</html>

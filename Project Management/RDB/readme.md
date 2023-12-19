@@ -158,6 +158,17 @@ create table store(
     foreign key (profile_id) references profile(profile_id),
     foreign key (video_id) references video(video_id)
 );
+
+create table profile_image_table(
+    profile_image_id int IDENTITY (1, 1) primary key,
+    profile_image_url
+);
+
+create table profile_image_relation(
+    profile_image_relation_id int IDENTITY (1, 1) primary key,
+    profile_id int,
+    profile_image_id
+);
 ```
 
 ## 기능별 정리
@@ -186,3 +197,34 @@ create table store(
 
 ## 조회 관련 기능은 -> 뷰로 정의해서 하고, 인덱스를 사용하자.
 
+### 뷰 정의
+
+    ``` // 영화 뷰
+    CREATE VIEW movie_view 
+    AS SELECT title, description, view_count, release_date, video_img_url, video_url, sequence 
+    from video, video_detail 
+    where video.video_id = video_detail.video_id
+    ```
+    
+    ```// 유저 뷰
+    CREATE VIEW user_view
+    AS SELECT nickname, profile_url, birth_date, service_grade
+    from user_table, profile
+    where user_table.user_id = profile.user_id
+
+    ```
+    
+    ``` // 플레이 타임 뷰
+    CREATE VIEW play_time_view 
+    AS SELECT profile_id, time, date
+    from profile, play_time
+    where profile.profile_id = play_time.profile_id
+    ```
+    
+    ``` // 프로필 뷰
+    CREATE VIEW profile_view
+    AS SELECT nickname, profile_image_url,
+    from profile, profile_image_relation, profile_image_table
+    where profile.profile_id = profile_image_relation.profile_id and profile_image_table.profile_image_id = profile_image_relation.profile_image_id
+    
+    ```
