@@ -26,7 +26,7 @@ filename(req, file, done) {
     done(null, hashedFileName);
 },
 destination(req, file, done) {
-    const folder ='pro_images';
+    const folder ='../../../../../../../../work/pro_images';
     done(null, path.join(__dirname, Dom, folder));
 }
 });
