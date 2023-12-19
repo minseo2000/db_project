@@ -36,7 +36,7 @@ app.get("/video/:fileName", (req, res) => {
         }
     }
 
-    res.setHeader("content-type", "video/mp4");
+ //   res.setHeader("content-type", "video/mp4");
 
     fs.stat(filePath, (err, stat) => {
         if (err) {
