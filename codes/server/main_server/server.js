@@ -10,6 +10,7 @@ require('dotenv').config();
 const checkOverlap = require('./routes/checkOverlap');
 const port = process.env.PORT;
 const queryDatabase = require('./routes/db');
+const movie = require('./routes/movie');
 
 app.use(cors());
 app.use(express.json());
@@ -19,7 +20,7 @@ app.use(morgan('dev'));
 app.use(login);
 app.use(signup);
 app.use(EditUserinfo);
-
+app.use(movie);
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build/index.html'))
 });
