@@ -29,10 +29,11 @@ def insert():
 def read():
     # R: 데이터 읽기 (SELECT)
     try:
-        select_query = "select * from video_genre"
-        cursor.execute(select_query)
+        select_query = "select * from video_detail where video_id = %s"
+        cursor.execute(select_query, 18)
         for row in cursor.fetchall():
             print(row)
+            print('http://minseotest.iptime.org:50011/video/'+str(row[2]))
     except Exception as e:
         print(f"데이터 읽기 중 오류 발생: {e}")
 def update():
@@ -54,7 +55,7 @@ def delete():
         print(f"데이터 삭제 중 오류 발생: {e}")
         conn.rollback()
 
-delete()
+read()
 
 # 작업 완료 후 커서와 연결 종료
 cursor.close()

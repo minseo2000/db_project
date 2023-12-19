@@ -296,7 +296,7 @@ def insert():
 def read():
     # R: 데이터 읽기 (SELECT)
     try:
-        select_query = "select count(*) from video_actor"
+        select_query = "select * from video_actor"
         cursor.execute(select_query)
         for row in cursor.fetchall():
             print(row)
