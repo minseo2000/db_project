@@ -66,7 +66,8 @@ router.get('/api/getImages', async(req, res) => {
     try{
         const query = 'select profile_image_url from profile_image_table';
         let result = await queryDatabase(query, {});
-        result = getProfileImage(result);
+        console.log(result);
+        result = await getProfileImage(result);
         res.json(result);
     }
     catch{
