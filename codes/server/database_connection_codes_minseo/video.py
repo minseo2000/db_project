@@ -32,7 +32,7 @@ def read():
         select_query = "select * from video"
         cursor.execute(select_query)
         for row in cursor.fetchall():
-            print(row)
+            print(row[1], 'http://minseotest.iptime.org:50011/image/'+row[5])
     except Exception as e:
         print(f"데이터 읽기 중 오류 발생: {e}")
 def update():
