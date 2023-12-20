@@ -36,6 +36,14 @@ async function queryDatabase(query, parameters){
             .input('birth_date', parameters.birth_date)
             .input('email', parameters.email)
             .input('service_grade', parameters.service_grade)  // 'WinRate'에 대한 입력 추가
+            .input('nickname', parameters.nickname)
+            .input('profile_img_url', parameters.profile_img_url)
+            .input('profile_id', parameters.profile_id)
+            .input('original_card', parameters.original_card)
+            .input('video_id', parameters.video_id)
+            .input('view_count', parameters.view_count)
+            .input('searchvalue', parameters.searchvalue)
+            .input('searchvaluetitge', parameters.searchvaluetitge)
             .query(query);
         return result.recordset;
        

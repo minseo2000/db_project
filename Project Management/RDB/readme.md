@@ -173,27 +173,27 @@ create table profile_image_relation(
 
 ## 기능별 정리
 
-| 기능           | SQL                                                                                                                                                       |
-|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 영화 테이블       | ----------------------------------------------------                                                                                                      |
-| 영화 목록 삽입     | insert into video(title, description, view_count, release_date, video_img_url) values();                                                                  |
-| 영화 목록 삭제     | delete from video where title = ?;                                                                                                                        |
-| 영화 목록 수정     | update video set 'column' = 'value' where '조건'                                                                                                            |
-| 영화 상세 테이블    | ----------------------------------------------------                                                                                                      |
-| 영화 상세 목록 삽입  | insert into video_detail(video_id, video_url, sequence) values ()                                                                                         |
-| 영화 상세 목록 삭제  | delete from video_detail where video_id = ?                                                                                                               |
-| 영화 상세 목록 수정  | update video_detail set 'column' = 'value' where '조건'                                                                                                      |
-| 유저 테이블       | ----------------------------------------------------                                                                                                      |
-| 유저 테이블 삽입    | 유저 테이블 값 넣기 전 card 테이블에 값 넣어야 함.<br>insert into user_table(user_id_c, card_id, pass_word, ph_num, user_name, birth_date, email, service_grade) values (?) |
-| 유저 테이블 삭제    | 유저 테이블 삭제 전 user_id 조회해야 함.<br>delete from user_table where user_id = ?                                                                                   |
-| 유저 테이블 수정    | 유저 테이블 삭제 전 user_id 조회해야 함<br>update user_table set 'column' = 'value' where '조건'                                                                         |
-| profile 테이블  | ----------------------------------------------------                                                                                                      |
-| 프로필 테이블 값 삽입 | insert into profile(profile_img_url, user_id, nickname) values (?);                                                                                       |
-| 프로필 테이블 값 삭제 | 내 프로필 id 조회 필요<br>delete from profile where profile_id = ?                                                                                                |
-| 프로필 테이블 값 수정 | 내 프로필 id 조회 필요<br>update profile set 'column' = 'value' where '조건'                                                                                        |
-|  테이블  | ----------------------------------------------------                                                                                                      |
-
-
+| 기능                 | SQL                                                                                                                                                                                        |
+|--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 영화 테이블             | ----------------------------------------------------                                                                                                                                       |
+| 영화 목록 삽입           | insert into video(title, description, view_count, release_date, video_img_url) values();                                                                                                   |
+| 영화 목록 삭제           | delete from video where title = ?;                                                                                                                                                         |
+| 영화 목록 수정           | update video set 'column' = 'value' where '조건'                                                                                                                                             |
+| 영화 상세 테이블          | ----------------------------------------------------                                                                                                                                       |
+| 영화 상세 목록 삽입        | insert into video_detail(video_id, video_url, sequence) values ()                                                                                                                          |
+| 영화 상세 목록 삭제        | delete from video_detail where video_id = ?                                                                                                                                                |
+| 영화 상세 목록 수정        | update video_detail set 'column' = 'value' where '조건'                                                                                                                                      |
+| 유저 테이블             | ----------------------------------------------------                                                                                                                                       |
+| 유저 테이블 삽입          | 유저 테이블 값 넣기 전 card 테이블에 값 넣어야 함.<br>insert into user_table(user_id_c, card_id, pass_word, ph_num, user_name, birth_date, email, service_grade) values (?)                                  |
+| 유저 테이블 삭제          | 유저 테이블 삭제 전 user_id 조회해야 함.<br>delete from user_table where user_id = ?                                                                                                                    |
+| 유저 테이블 수정          | 유저 테이블 삭제 전 user_id 조회해야 함<br>update user_table set 'column' = 'value' where '조건'                                                                                                          |
+| profile 테이블        | ----------------------------------------------------                                                                                                                                       |
+| 프로필 테이블 값 삽입       | insert into profile(profile_img_url, user_id, nickname) values (?);                                                                                                                        |
+| 프로필 테이블 값 삭제       | 내 프로필 id 조회 필요<br>delete from profile where profile_id = ?                                                                                                                                 |
+| 프로필 테이블 값 수정       | 내 프로필 id 조회 필요<br>update profile set 'column' = 'value' where '조건'                                                                                                                         |
+| 테이블                | ----------------------------------------------------                                                                                                                                       |
+| 순의 별로 10개의 영화 보여주기 | select top 10 * from movie_view order by (view_count) desc;                                                                                                                                |
+| 장르 별 영화 목록 출력      | select genre_name, video_genre.video_genre_id, video_genre_relation.video_id from video_genre, video_genre_relation where video_genre.video_genre_id = video_genre_relation.video_genre_id |
 
 ## 조회 관련 기능은 -> 뷰로 정의해서 하고, 인덱스를 사용하자.
 
@@ -228,5 +228,30 @@ create table profile_image_relation(
     where profile.profile_id = profile_image_relation.profile_id and profile_image_table.profile_image_id = profile_image_relation.profile_image_id
     
     ```
-
     
+    ``` // 검색 뷰
+    CREATE VIEW search_view 
+    AS SELECT video.video_id, actor_name, genre_name, title, video_img_url, description 
+    from video_actor, video_actor_relation, video, video_genre, video_genre_relation 
+    where video_actor.video_actor_id = video_actor_relation.video_actor_id and video_actor_relation.video_id = video.video_id and video_genre.video_genre_id = video_genre_relation.video_genre_id and video_genre_relation.video_id = video.video_id
+    ```
+
+    ``` // 장르 뷰
+    CREATE VIEW genre_view
+    AS select genre_name, video_genre.video_genre_id, video_genre_relation.video_id from video_genre, video_genre_relation where video_genre.video_genre_id = video_genre_relation.video_genre_id
+    ```
+    
+    ``` // 배우 뷰
+    CREATE VIEW actor_view
+    AS select actor_name, video_id from video_actor, video_actor_relation where video_actor.video_actor_id = video_actor_relation.video_actor_id
+    ```
+
+### 인덱스 정의
+    
+    ``` //유저 테이블 이메일 인덱스
+    CREATE INDEX idx_user_table_email ON user_table(email)
+    ```
+
+    ``` //서치 뷰 인덱스
+    CREATE INDEX idx_title_table ON search_view(title)
+    ```

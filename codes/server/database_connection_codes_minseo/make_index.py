@@ -36,8 +36,8 @@ def read():
 def update():
     # U: 데이터 업데이트 (UPDATE)
     try:
-        update_query = "UPDATE your_table SET column1 = %s WHERE column2 = %s"
-        cursor.execute(update_query, ('new_value', 'some_value'))
+        update_query = "UPDATE your_table SET card_id = %s WHERE user_id = %s"
+        cursor.execute(update_query, ('1111-2222', 13))
         conn.commit()
     except Exception as e:
         print(f"데이터 업데이트 중 오류 발생: {e}")
@@ -45,7 +45,7 @@ def update():
 def delete():
     # D: 데이터 삭제 (DELETE)
     try:
-        delete_query = "DELETE FROM card_table"
+        delete_query = "DELETE FROM user_table where user_id = %s"
         cursor.execute(delete_query)
         conn.commit()
     except Exception as e:
@@ -55,7 +55,7 @@ def delete():
 
 def makeIndex():
     try:
-        delete_query = "CREATE INDEX idx_user_table_email ON user_table(email)"
+        delete_query = "CREATE INDEX idx_title_table ON search_view(title)"
         cursor.execute(delete_query)
         conn.commit()
     except Exception as e:

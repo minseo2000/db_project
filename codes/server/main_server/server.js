@@ -10,10 +10,9 @@ require('dotenv').config();
 const checkOverlap = require('./routes/checkOverlap');
 const port = process.env.PORT;
 const queryDatabase = require('./routes/db');
-const movie = require('./routes/movie');
 const timesvlo=require('./routes/time-sv-lo');
 const bodyParser = require('body-parser');
-
+const search=require('./routes/search');
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,11 +22,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/build')));
 app.use(morgan('dev'));
-
+app.use(search);
 app.use(login);
 app.use(signup);
 app.use(EditUserinfo);
-app.use(movie);
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build/index.html'))
 });
