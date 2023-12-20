@@ -195,6 +195,8 @@ create table profile_image_relation(
 | 순의 별로 10개의 영화 보여주기 | select top 10 * from movie_view order by (view_count) desc;                                                                                                                                |
 | 장르 별 영화 목록 출력      | select genre_name, video_genre.video_genre_id, video_genre_relation.video_id from video_genre, video_genre_relation where video_genre.video_genre_id = video_genre_relation.video_genre_id |
 
+select video_id from genre_view where video_genre_id = 
+
 ## 조회 관련 기능은 -> 뷰로 정의해서 하고, 인덱스를 사용하자.
 
 ### 뷰 정의
