@@ -1,11 +1,12 @@
 const express = require("express");
 const fs = require("fs");
 
+const cors = require("cors");
 const app = express();
 const port = 50011;
 
 app.use(express.static("public"));
-
+app.use(cors());
 app.get("/image/:fileName", (req, res) => {
     const fileName = req.params.fileName;
     const filePath = `../../../../../../../../work/images/${fileName}`; // 확장자가 이미지 파일 이름에 포함되어 있다고 가정
