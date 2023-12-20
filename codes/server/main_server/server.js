@@ -11,6 +11,13 @@ const checkOverlap = require('./routes/checkOverlap');
 const port = process.env.PORT;
 const queryDatabase = require('./routes/db');
 const movie = require('./routes/movie');
+const timesvlo=require('./routes/time-sv-lo');
+const bodyParser = require('body-parser');
+
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(timesvlo);
 
 app.use(cors());
 app.use(express.json());
