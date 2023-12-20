@@ -31,6 +31,9 @@ app.use(search);
 app.use(login);
 app.use(signup);
 app.use(EditUserinfo);
+app.use(getMovie);
+app.use(createProfile);
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build/index.html'))
 });
