@@ -38,7 +38,7 @@ const upload = multer({
     limits: { fileSize: 10 * 1024 * 1024 }, 
     storage: storage
 }).fields([
-    { name: 'imageFiles', maxCount: 5 }
+    { name: 'imageFiles', maxCount: 500 }
 ]);
 
 app.post('/image_upload', upload, async (req, res) => {
