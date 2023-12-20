@@ -45,6 +45,9 @@ async function queryDatabase(query, parameters){
             .input('searchvalue', parameters.searchvalue)
             .input('searchvaluetitge', parameters.searchvaluetitge)
             .input('time',parameters.time)
+            .input('profile_image_id', parameters.profile_image_id)
+            .input('profile_image_url', parameters.profile_image_url)
+            .input('video_genre_id', parameters.video_genre_id)
             .query(query);
         return result.recordset;
        

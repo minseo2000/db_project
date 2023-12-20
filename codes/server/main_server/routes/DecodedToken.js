@@ -5,7 +5,8 @@ module.exports = async function DecodedToken(token){
     let user_id_c = '';
     jwt.verify(token, key, function(err, result){
         if(err){
-            res.status(500).json({message : 'Server error'});
+            console.log(token);
+            return err;
         }
         else{
             user_id_c = result.user_id_c;

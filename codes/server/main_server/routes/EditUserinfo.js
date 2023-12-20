@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const queryDatabase = require('./db.js')
-const {checkCardID} = require('./checkOverlap');
-const {checkPhoneNumber} = require('./checkOverlap');
-const {checkPassword} = require('./checkOverlap');
-const {checkEmail} = require('./checkOverlap.js');
+const {checkCardID} = require('./checkUser.js');
+const {checkPhoneNumber} = require('./checkUser.js');
+const {checkPassword} = require('./checkUser.js');
+const {checkEmail} = require('./checkUser.js');;
 const DecodedToken = require('./DecodedToken');
+const {checkDeletePassword} = require('./checkUser.js');
+
 
 router.post('/api/editEmail', checkEmail, async(req, res) => {
     try{
@@ -82,23 +84,15 @@ router.post('/api/editCardID',checkCardID, async function(req, res){
     try{
         const card_id = req.card_id;
         const user_id_c = req.user_id_c;
-        const get_query = 'select birth_date from user_table where user_id_c = @user_id_c';
+        const get_query = 'select card_id from user_table where user_id_c = @user_id_c';
         
         const get_result = await queryDatabase(get_query, {user_id_c : user_id_c});
-        let birth_date = get_result[0].birth_date;
+        let original_card = get_result[0].card_id;
 
-        birth_date = new Date(birth_date);
-        birth_date = birth_date.toISOString();
-        birth_date = birth_date.substring(0, birth_date.indexOf("T"));
-        console.log(birth_date);
-
-        const query = 'DELETE FROM user_table WHERE birth_date = @birth_date; \
-        DELETE FROM card_table WHERE birth_date = @birth_date;\
-        INSERT INTO card_table (card_id, birth_date) VALUES (@card_id, @birth_date);\
-        INSERT INTO user_table (card_id, birth_date) VALUES (@card_id, @birth_date);';
+        const query = 'UPDATE card_table SET card_id = @card_id WHERE card_id = @original_card';
         const result = await queryDatabase(query, {
             card_id : card_id,
-            birth_date : birth_date
+            original_card : original_card
         })
         res.json({message : '카드 정보 수정 완료'});               
     }
@@ -106,6 +100,19 @@ router.post('/api/editCardID',checkCardID, async function(req, res){
         console.log(err);
         res.status(500).json({message : "Server error"});
     }   
+})
+
+
+router.post('/api/DeleteAccount', checkDeletePassword, async(req, res) => {
+    try{
+        const user_id_c = req.user_id_c;
+        const query = 'delete from user_table where user_id_c = @user_id_c';
+        await queryDatabase(query, {user_id_c : user_id_c});
+        res.json({message : "계정 삭제 성공"});
+    }
+    catch(err){ 
+        res.status(500).json({message : "Server error"});
+    }
 })
 
 

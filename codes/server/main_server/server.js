@@ -13,6 +13,8 @@ const queryDatabase = require('./routes/db');
 const timesvlo=require('./routes/time-sv-lo');
 const bodyParser = require('body-parser');
 const search=require('./routes/search');
+const getMovie = require('./routes/getMovie');
+const createProfile = require('./routes/creatProfile');
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,6 +24,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/build')));
 app.use(timesvlo);
+
+
 app.use(morgan('dev'));
 app.use(search);
 app.use(login);

@@ -17,14 +17,14 @@ router.post('/api/signup', async(req, res, next) => {
         let isOverlap = false; 
         
        
-        const checkquery = 'select user_id_c, ph_num, email from user_table ';
+        const checkquery = 'select user_id_c, ph_num, email,card_id from user_table ';
         const checkresult = await queryDatabase(checkquery, {
             user_id_c : user_id_c,
             ph_num : ph_num,
             email : email,
             card_id : card_id
         })
-        
+        console.log(card_id, checkresult[0].card_id);
         for(let i = 0; i < checkresult.length; i++){//주옥 확인
             if(user_id_c == checkresult[i].user_id_c){
                 res.status(403).json({message : '아이디 중복'});
@@ -42,11 +42,13 @@ router.post('/api/signup', async(req, res, next) => {
                 break;
             }
             else if(card_id == checkresult[i].card_id){
+                
                 res.status(402).json({message : "카드번호 중복"});
                 isOverlap = true;
                 break;
             }
         }
+        
         if(isOverlap == false){
             if(card_id.length == 0 | card_id == undefined){
                 let query = 'insert into card_table (card_id, birth_date) VALUES (@card_id, @birth_date)';
