@@ -44,6 +44,7 @@ async function queryDatabase(query, parameters){
             .input('view_count', parameters.view_count)
             .input('searchvalue', parameters.searchvalue)
             .input('searchvaluetitge', parameters.searchvaluetitge)
+            .input('time',parameters.time)
             .query(query);
         return result.recordset;
        
