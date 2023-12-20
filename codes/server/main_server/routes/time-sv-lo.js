@@ -8,20 +8,25 @@ const queryDatabase = require('./db.js')
 //영상 중단 시간 저장
 router.post('/api/save-play-time', async (req, res) => {
     try {
-        const  profile_id= req.body.profile_id;
         console.log('----------', req.body)
-        console.log(profile_id);
-        const  video_id= req.body.video_id;
-        const  stop_time= req.body.stop_Time;
-        const query=`
+        const profile_id = req.body.profile_id;
+        const video_id = req.body.video_id;
+        const stop_time = req.body.stop_Time;
+
+        const query = `
+            IF EXISTS (SELECT * FROM play_time WHERE profile_id = @profile_id AND video_id = @video_id)
+                UPDATE play_time
+                SET time = @time
+                WHERE profile_id = @profile_id AND video_id = @video_id
+            ELSE
                 INSERT INTO play_time (profile_id, video_id, time, date)
                 VALUES (@profile_id, @video_id, @time, GETDATE());
-            `;
+        `;
 
         await queryDatabase(query, {
-            profile_id:profile_id,
-            video_id:video_id,
-            time:stop_time
+            profile_id: profile_id,
+            video_id: video_id,
+            time: stop_time
         });
         res.status(200).json({ message: '성공적으로 저장되었습니다.' });
     } catch (err) {
