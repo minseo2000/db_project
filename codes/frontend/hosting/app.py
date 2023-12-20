@@ -1,38 +1,10 @@
+from flask import Flask, send_from_directory
 
-from flask import Flask
-from flask import send_from_directory
-from flask import render_template
-from flask_cors import CORS
-
-app = Flask(__name__, )
-# app = Flask(__name__, template_folder='templates')
-CORS(app)
-
-FLUTTER_WEB_APP = 'templates'
+app = Flask(__name__, static_folder='build', static_url_path='')
 
 @app.route('/')
-def render_page():
-    return render_template('index.html')
-
-
-@app.route('/web/')
-def render_page_web():
-    return render_template('index.html')
-
-
-@app.route('/web/<path:name>')
-def return_flutter_doc(name):
-
-    datalist = str(name).split('/')
-    DIR_NAME = FLUTTER_WEB_APP
-
-    if len(datalist) > 1:
-        for i in range(0, len(datalist) - 1):
-            DIR_NAME += '/' + datalist[i]
-
-    return send_from_directory(DIR_NAME, datalist[-1])
-
+def serve():
+    return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=50040)
-
+    app.run(use_reloader=True, port=50040, threaded=True)
