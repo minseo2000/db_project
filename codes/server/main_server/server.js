@@ -16,11 +16,12 @@ const search=require('./routes/search');
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(timesvlo);
+
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/build')));
+app.use(timesvlo);
 app.use(morgan('dev'));
 app.use(search);
 app.use(login);
